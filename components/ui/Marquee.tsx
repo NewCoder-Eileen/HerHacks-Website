@@ -10,7 +10,7 @@ interface MarqueeProps {
   className?: string;
 }
 
-const speedDuration = {
+const speedDuration: Record<string, string> = {
   slow: "60s",
   normal: "35s",
   fast: "20s",
@@ -25,40 +25,26 @@ export function Marquee({
 }: MarqueeProps) {
   return (
     <div
-      className={`relative flex overflow-hidden select-none ${className}`}
+      className={`relative flex overflow-hidden select-none marquee-root ${className}`}
       style={{
-        maskImage:
-          "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        WebkitMaskImage:
-          "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
       }}
     >
       <div
-        className="flex w-max animate-marquee gap-6 items-center"
+        className={`flex w-max gap-6 items-center marquee-track ${pauseOnHover ? "marquee-pausable" : ""}`}
         style={{
           animationDuration: speedDuration[speed],
           animationDirection: reverse ? "reverse" : "normal",
           animationTimingFunction: "linear",
           animationIterationCount: "infinite",
-          ...(pauseOnHover ? { "--pauseOnHover": "paused" } as React.CSSProperties : {}),
+          animationName: "marquee-scroll",
         }}
+        aria-hidden="true"
       >
         {children}
         {children}
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation-name: marquee;
-        }
-        .animate-marquee:hover {
-          animation-play-state: ${pauseOnHover ? "paused" : "running"};
-        }
-      `}</style>
     </div>
   );
 }
