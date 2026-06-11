@@ -1,11 +1,8 @@
-import Link from "next/link";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { teamMembers } from "@/content/team";
-
-const featuredTeam = teamMembers.filter((m) => m.team === "Co-Directors");
 
 export function TeamTeaser() {
   return (

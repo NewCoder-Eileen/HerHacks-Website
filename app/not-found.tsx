@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { MascotSlot } from "@/components/ui/MascotSlot";
@@ -27,7 +26,7 @@ export default function NotFound() {
       </h1>
 
       <p className="text-muted-foreground text-lg mb-10 max-w-sm">
-        The page you're looking for doesn't exist. Maybe it was submitted to Devpost already?
+        The page you&apos;re looking for doesn&apos;t exist. Maybe it was submitted to Devpost already?
       </p>
 
       <div className="flex flex-col sm:flex-row items-center gap-3">

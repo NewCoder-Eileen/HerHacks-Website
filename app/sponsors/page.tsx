@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PlaceholderLogo } from "@/components/ui/MascotSlot";
@@ -9,7 +8,6 @@ import {
   tierBenefits,
   tierLabels,
   type SponsorTier,
-  type TierBenefit,
 } from "@/content/sponsors";
 import { event } from "@/content/event";
 
@@ -141,7 +139,7 @@ export default function SponsorsPage() {
               Become a Sponsor
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-              Want to reach the next generation of tech talent? Reach out and let's talk about how
+              Want to reach the next generation of tech talent? Reach out and let&apos;s talk about how
               your organization can make an impact at {event.name}.
             </p>
             <Button href={`mailto:${event.email.sponsorship}`} size="lg" external>
