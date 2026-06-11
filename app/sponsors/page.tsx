@@ -9,6 +9,7 @@ import {
   tierBenefits,
   tierLabels,
   type SponsorTier,
+  type TierBenefit,
 } from "@/content/sponsors";
 import { event } from "@/content/event";
 
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
   description: `Support ${event.name} and connect with the next generation of innovators.`,
 };
 
-const tiers: Array<{ id: SponsorTier; price: string; color: string }> = [
+type PaidTier = Exclude<SponsorTier, "title">;
+
+const tiers: Array<{ id: PaidTier; price: string; color: string }> = [
   { id: "bronze", price: "$500+", color: "border-border" },
   { id: "silver", price: "$1,500+", color: "border-border-strong" },
   { id: "gold", price: "$3,000+", color: "border-accent" },
