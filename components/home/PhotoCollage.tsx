@@ -1,19 +1,23 @@
 import { Marquee } from "@/components/ui/Marquee";
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
 
-const PHOTO_COUNT = 10;
-
-const photos = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
-  id: i,
-  label: `PHOTO ${i + 1}`,
-  aspect: i % 3 === 0 ? "aspect-[4/3]" : i % 3 === 1 ? "aspect-square" : "aspect-[3/4]",
-  width: i % 3 === 0 ? "w-56" : i % 3 === 1 ? "w-44" : "w-36",
-}));
+const photos = [
+  { id: 0,  label: "PHOTO 1",  aspect: "aspect-[4/3]", width: "w-52" },
+  { id: 1,  label: "PHOTO 2",  aspect: "aspect-square", width: "w-40" },
+  { id: 2,  label: "PHOTO 3",  aspect: "aspect-[3/4]",  width: "w-36" },
+  { id: 3,  label: "PHOTO 4",  aspect: "aspect-[4/3]", width: "w-48" },
+  { id: 4,  label: "PHOTO 5",  aspect: "aspect-square", width: "w-44" },
+  { id: 5,  label: "PHOTO 6",  aspect: "aspect-[3/4]",  width: "w-32" },
+  { id: 6,  label: "PHOTO 7",  aspect: "aspect-[4/3]", width: "w-52" },
+  { id: 7,  label: "PHOTO 8",  aspect: "aspect-square", width: "w-40" },
+  { id: 8,  label: "PHOTO 9",  aspect: "aspect-[3/4]",  width: "w-36" },
+  { id: 9,  label: "PHOTO 10", aspect: "aspect-[4/3]", width: "w-48" },
+];
 
 export function PhotoCollage() {
   return (
     <section aria-label="Photo gallery" className="section-padding bg-background overflow-hidden">
-      <AnimatedSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+      <AnimatedSection className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
         <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3">
           Memories
         </p>
@@ -22,27 +26,27 @@ export function PhotoCollage() {
         </h2>
       </AnimatedSection>
 
-      {/* Decorative hang-line */}
       <AnimatedSection delay={0.1}>
-        <div className="relative w-full mb-4" aria-hidden="true">
-          <div className="absolute left-0 right-0 top-1/2 h-px bg-border" />
-          <Marquee speed="slow" className="py-2">
-            {photos.map((photo) => (
-              <div key={photo.id} className="flex flex-col items-center gap-0.5">
-                {/* String */}
-                <div className="w-px h-6 bg-border" aria-hidden="true" />
-                {/* Photo placeholder */}
-                <div
-                  className={`placeholder-box ${photo.width} ${photo.aspect} rounded-xl shrink-0`}
-                  role="img"
-                  aria-label={`Placeholder: ${photo.label}`}
-                >
-                  <span>{photo.label}</span>
-                </div>
+        {/* Clothesline rope */}
+        <div className="w-full h-px bg-border mb-0" aria-hidden="true" />
+
+        {/* Photos hanging from the line */}
+        <Marquee speed="slow" className="pt-0">
+          {photos.map((photo) => (
+            <div key={photo.id} className="flex flex-col items-center shrink-0">
+              {/* String */}
+              <div className="w-px h-5 bg-border-strong shrink-0" aria-hidden="true" />
+              {/* Photo placeholder */}
+              <div
+                className={`placeholder-box ${photo.width} ${photo.aspect} rounded-xl`}
+                role="img"
+                aria-label={`Placeholder: ${photo.label}`}
+              >
+                <span>{photo.label}</span>
               </div>
-            ))}
-          </Marquee>
-        </div>
+            </div>
+          ))}
+        </Marquee>
       </AnimatedSection>
     </section>
   );
